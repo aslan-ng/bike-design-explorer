@@ -1,13 +1,13 @@
-﻿categories,required
-Bike Frame,TRUE
-Tires,TRUE
-Brakes,TRUE
-Handlebars,TRUE
-Pedals,TRUE
-Gears,TRUE
-Seat,TRUE
-Accessories,FALSE
-Decals,FALSE
-Carriers,FALSE
-Suspension/shock absorbers,FALSE
-Fenders,FALSE
+﻿categories,required,multiple_allowed
+Bike Frame,TRUE,FALSE
+Tires,TRUE,FALSE
+Brakes,TRUE,FALSE
+Handlebars,TRUE,FALSE
+Pedals,TRUE,FALSE
+Gears,TRUE,FALSE
+Seat,TRUE,FALSE
+Accessories,FALSE,TRUE
+Decals,FALSE,FALSE
+Carriers,FALSE,FALSE
+Suspension/shock absorbers,FALSE,FALSE
+Fenders,FALSE,FALSE

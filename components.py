@@ -7,12 +7,6 @@ from config import DATA_DIR, HF_DATASET_REPO_ID
 COMPONENTS_FILE_NAME = "components.csv"
 COMPONENTS_FILE_PATH = DATA_DIR / COMPONENTS_FILE_NAME
 
-COMPONENT_METADATA = {
-    "component_category", # Category
-    "component_name", # Name
-    "component_description", # Description
-    "component_cost", # Cost
-}
 
 def load_components_df_from_hf() -> pd.DataFrame:
     """
