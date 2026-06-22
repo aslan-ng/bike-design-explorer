@@ -1,0 +1,13 @@
+﻿categories,required
+Bike Frame,TRUE
+Tires,TRUE
+Brakes,TRUE
+Handlebars,TRUE
+Pedals,TRUE
+Gears,TRUE
+Seat,TRUE
+Accessories,FALSE
+Decals,FALSE
+Carriers,FALSE
+Suspension/shock absorbers,FALSE
+Fenders,FALSE

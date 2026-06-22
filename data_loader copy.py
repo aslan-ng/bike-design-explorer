@@ -20,20 +20,16 @@ from HF import *
 api = HfApi(token=HF_TOKEN)
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-
-CATEGORIES_FILE = DATA_DIR / "categories.csv"
-COMPONENTS_FILE = DATA_DIR / "components.csv"
-CUSTOMER_RESEARCH_FILE = DATA_DIR / "customer_research.csv"
-DEMAND_PARAMETERS_FILE = DATA_DIR / "demand_parameters.json"
-
+DEFAULT_COMPONENTS_FILE = BASE_DIR / "components.csv"
+DEFAULT_CUSTOMER_RESEARCH_FILE = BASE_DIR / "customer_research.csv"
 
 CUSTOMER_METADATA = {
-    "Need",
+    "feature",
 }
 
 COMPONENT_METADATA = {
     "component_category", # Category
+    "component_grouping", # Groupings to avoid duplicate selection
     "component_name", # Name
     "component_description", # Description
     "component_cost", # Cost
