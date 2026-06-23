@@ -62,7 +62,7 @@ def select_design_components(
 def calculate_design_cost(selected_components_df: pd.DataFrame) -> float:
     return float(selected_components_df["component_cost"].sum())
 
-def calculate_design_satisfaction(
+def calculate_user_satisfaction(
     selected_components_df: pd.DataFrame,
     user_needs_df: pd.DataFrame,
 ) -> float:
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     )
     print("\n>>> Design Cost: ", design_cost)
 
-    user_satisfaction = calculate_design_satisfaction(
+    user_satisfaction = calculate_user_satisfaction(
         selected_components_df=selected_components_df,
         user_needs_df=user_needs_df,
     )

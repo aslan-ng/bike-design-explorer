@@ -20,6 +20,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from load_local import DATA_DIR, DEMAND_FILE_PATH
+from design import calculate_user_satisfaction, calculate_design_cost
 
 
 CHECKPOINT_DIR = DATA_DIR / "demand_analysis"
@@ -41,22 +42,6 @@ def save_demand_parameters_locally(
 ) -> None:
     with open(file_path, "w") as f:
         json.dump(demand_parameters, f, indent=4)
-
-
-def calculate_option_satisfaction(
-    option_df: pd.DataFrame,
-    user_needs_df: pd.DataFrame,
-) -> float:
-    satisfaction = 0.0
-
-    for _, row in user_needs_df.iterrows():
-        need = row["Need"]
-        importance = row["Importance"]
-        total_contribution = (option_df[need] - 100).sum()
-        satisfaction += importance * total_contribution
-
-    return float(satisfaction)
-
 
 def get_category_selection_options(
     category: str,
@@ -87,7 +72,6 @@ def get_category_selection_options(
 
     return [[]] + [[name] for name in component_names]
 
-
 def precompute_category_options(
     components_df: pd.DataFrame,
     categories_df: pd.DataFrame,
@@ -110,18 +94,18 @@ def precompute_category_options(
         options = []
 
         for component_names in raw_options:
-            option_df = components_df.loc[
+            selected_components_df = components_df.loc[
                 (components_df["component_category"] == category)
                 & (components_df["component_name"].isin(component_names))
             ]
 
-            cost = float(option_df["component_cost"].sum())
+            cost = calculate_design_cost(selected_components_df)
 
-            if len(option_df) == 0:
+            if len(selected_components_df) == 0:
                 satisfaction = 0.0
             else:
-                satisfaction = calculate_option_satisfaction(
-                    option_df=option_df,
+                satisfaction = calculate_user_satisfaction(
+                    selected_components_df=selected_components_df,
                     user_needs_df=user_needs_df,
                 )
 
@@ -144,7 +128,6 @@ def precompute_category_options(
 
     return category_options
 
-
 def get_total_combinations(category_options: list[dict]) -> int:
     total = 1
 
@@ -152,7 +135,6 @@ def get_total_combinations(category_options: list[dict]) -> int:
         total *= len(category_data["options"])
 
     return total
-
 
 def index_to_option_indices(index: int, option_counts: list[int]) -> list[int]:
     option_indices = [0] * len(option_counts)
@@ -162,7 +144,6 @@ def index_to_option_indices(index: int, option_counts: list[int]) -> list[int]:
         index //= option_counts[i]
 
     return option_indices
-
 
 def build_selected_components_from_indices(
     option_indices: list[int],
@@ -177,7 +158,6 @@ def build_selected_components_from_indices(
             selected_components[option["category"]] = option["component_names"]
 
     return selected_components
-
 
 def init_worker(
     category_options: list[dict],
@@ -194,7 +174,6 @@ def init_worker(
     ]
     _WORKER_TOTAL_CATEGORIES = len(category_options)
     _WORKER_MARKUP = markup
-
 
 def evaluate_index_range(index_range: tuple[int, int]) -> dict:
     assert _WORKER_OPTIONS is not None
@@ -247,14 +226,12 @@ def evaluate_index_range(index_range: tuple[int, int]) -> dict:
         "best_number_of_components": best_local_number_of_components,
     }
 
-
 def load_checkpoint_state() -> dict | None:
     if not CHECKPOINT_STATE_PATH.exists():
         return None
 
     with open(CHECKPOINT_STATE_PATH, "r") as f:
         return json.load(f)
-
 
 def save_checkpoint_state(state: dict) -> None:
     CHECKPOINT_DIR.mkdir(exist_ok=True)
@@ -265,7 +242,6 @@ def save_checkpoint_state(state: dict) -> None:
         json.dump(state, f, indent=4)
 
     temporary_path.replace(CHECKPOINT_STATE_PATH)
-
 
 def estimate_demand_parameters(
     user_needs_df: pd.DataFrame,
