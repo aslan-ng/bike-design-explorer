@@ -1,4 +1,5 @@
 import os
+
 import gradio as gr
 from huggingface_hub import HfApi
 
@@ -13,7 +14,6 @@ from load_hf import (
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 api = HfApi(token=HF_TOKEN)
-import gradio as gr
 
 categories_df = load_categories_df_from_hf(cache=True)
 components_df = load_components_df_from_hf(cache=True)
@@ -118,27 +118,38 @@ def make_select_component_fn(
     return select_component
 
 
-component_grouping_states = []
+category_states = []
 
 
-def evaluate_ui(selling_price, *group_values):
+def get_category_settings(category: str) -> tuple[bool, bool]:
+    rows = categories_df[categories_df["categories"] == category]
+
+    if rows.empty:
+        return True, False
+
+    row = rows.iloc[0]
+
+    required = bool(row["required"])
+    allow_multiple = bool(row["multiple_allowed"])
+
+    return required, allow_multiple
+
+
+def evaluate_ui(selling_price, *category_values):
     if selling_price is None or selling_price <= 0:
         return "Please enter a valid positive selling price."
 
     selected_components = {}
 
-    for grouping_info, selected_names in zip(
-        component_grouping_states,
-        group_values,
-    ):
-        grouping = grouping_info["grouping"]
-        required = grouping_info["required"]
+    for category_info, selected_names in zip(category_states, category_values):
+        category = category_info["category"]
+        required = category_info["required"]
 
         selected_names = selected_names or []
-        selected_components[grouping] = selected_names
+        selected_components[category] = selected_names
 
         if required and len(selected_names) == 0:
-            return f"Please choose one item from required group: {grouping}"
+            return f"Please choose one item from required category: {category}"
 
     result = model.evaluate(
         selected_components=selected_components,
@@ -157,26 +168,7 @@ def evaluate_ui(selling_price, *group_values):
 """
 
 
-def get_grouping_settings(grouping: str) -> tuple[bool, bool]:
-    grouping_rows = categories_df[
-        categories_df["component_grouping"] == grouping
-    ]
-
-    if grouping_rows.empty:
-        return True, False
-
-    row = grouping_rows.iloc[0]
-
-    required = bool(row.get("required", True))
-    allow_multiple = bool(row.get("allow_multiple", False))
-
-    return required, allow_multiple
-
-
-with gr.Blocks(
-    title="Bike Design Explorer",
-    css=css,
-) as demo:
+with gr.Blocks(title="Bike Design Explorer") as demo:
     gr.Markdown(
         """
         # Bike Design Explorer
@@ -186,76 +178,58 @@ with gr.Blocks(
         """
     )
 
-    group_state_inputs = []
+    category_state_inputs = []
 
     for category in sorted(components_df["component_category"].unique()):
         category_df = components_df[
             components_df["component_category"] == category
         ]
 
-        gr.Markdown(f"## {category}")
+        required, allow_multiple = get_category_settings(category)
 
-        with gr.Group():
-            for grouping in sorted(category_df["component_grouping"].unique()):
-                grouping_df = category_df[
-                    category_df["component_grouping"] == grouping
-                ]
+        label_suffix = []
+        label_suffix.append("required" if required else "optional")
+        label_suffix.append("multiple allowed" if allow_multiple else "choose one")
 
-                required, allow_multiple = get_grouping_settings(grouping)
+        gr.Markdown(f"## {category} ({', '.join(label_suffix)})")
 
-                label_suffix = []
-                if required:
-                    label_suffix.append("required")
-                else:
-                    label_suffix.append("optional")
+        options = category_df.to_dict("records")
 
-                if allow_multiple:
-                    label_suffix.append("multiple allowed")
-                else:
-                    label_suffix.append("choose one")
+        selected_state = gr.State(value=[])
+        category_state_inputs.append(selected_state)
 
-                gr.Markdown(
-                    f"### {grouping} "
-                    f"({', '.join(label_suffix)})"
-                )
+        category_states.append(
+            {
+                "category": category,
+                "required": required,
+                "allow_multiple": allow_multiple,
+            }
+        )
 
-                options = grouping_df.to_dict("records")
+        card_outputs = []
 
-                selected_state = gr.State(value=[])
-                group_state_inputs.append(selected_state)
-
-                component_grouping_states.append(
-                    {
-                        "grouping": grouping,
-                        "required": required,
-                        "allow_multiple": allow_multiple,
-                    }
-                )
-
-                card_outputs = []
-
-                with gr.Row(elem_classes=["options-grid"]):
-                    for option in options:
-                        card = gr.HTML(
-                            make_card_html(
-                                name=option["component_name"],
-                                cost=option["component_cost"],
-                                description=option["component_description"],
-                                selected_names=[],
-                            )
-                        )
-                        card_outputs.append(card)
-
-                for option, card in zip(options, card_outputs):
-                    card.click(
-                        fn=make_select_component_fn(
-                            options=options,
-                            component_name=option["component_name"],
-                            allow_multiple=allow_multiple,
-                        ),
-                        inputs=[selected_state],
-                        outputs=[selected_state, *card_outputs],
+        with gr.Group(elem_classes=["options-grid"]):
+            for option in options:
+                card = gr.HTML(
+                    make_card_html(
+                        name=option["component_name"],
+                        cost=option["component_cost"],
+                        description=option["component_description"],
+                        selected_names=[],
                     )
+                )
+                card_outputs.append(card)
+
+        for option, card in zip(options, card_outputs):
+            card.click(
+                fn=make_select_component_fn(
+                    options=options,
+                    component_name=option["component_name"],
+                    allow_multiple=allow_multiple,
+                ),
+                inputs=[selected_state],
+                outputs=[selected_state, *card_outputs],
+            )
 
     gr.Markdown("## Price")
 
@@ -270,11 +244,11 @@ with gr.Blocks(
 
     evaluate_button.click(
         fn=evaluate_ui,
-        inputs=[selling_price, *group_state_inputs],
+        inputs=[selling_price, *category_state_inputs],
         outputs=output,
     )
 
 
 if __name__ == "__main__":
     demo.queue()
-    demo.launch()
+    demo.launch(css=css)
