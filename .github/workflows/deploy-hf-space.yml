@@ -16,11 +16,12 @@ jobs:
 
       - name: Prepare Space files
         run: |
+          rm -rf hf_space
           mkdir -p hf_space
 
           cat requirements/base.txt > hf_space/requirements.txt
           echo "" >> hf_space/requirements.txt
-          grep -v "^-r " requirements/production.txt >> hf_space/requirements.txt
+          grep -v "^-r " requirements/production.txt >> hf_space/requirements.txt || true
 
           cp app.py hf_space/
           cp config.py hf_space/
