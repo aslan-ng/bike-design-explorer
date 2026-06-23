@@ -24,7 +24,7 @@ jobs:
         run: |
           pip install -U huggingface_hub
           hf auth login --token "$HF_TOKEN"
-          hf space secrets set HF_TOKEN="$HF_TOKEN" --repo-id aslan-ng/bike-design-explorer
+          hf spaces secrets set HF_TOKEN="$HF_TOKEN" --repo-id aslan-ng/bike-design-explorer
 
       # Build a temporary directory ("hf_space") containing only files needed by HF Space
       # Generate a standalone requirements.txt from requirements/production.txt
