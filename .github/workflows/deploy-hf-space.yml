@@ -16,7 +16,6 @@ jobs:
 
       - name: Prepare Space files
         run: |
-          rm -rf hf_space
           mkdir -p hf_space
 
           cat requirements/base.txt > hf_space/requirements.txt
