@@ -1,3 +1,0 @@
-pandas
-dotenv
-huggingface_hub

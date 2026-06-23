@@ -1,0 +1,54 @@
+name: Deploy HF Space
+
+on:
+  # Deploy automatically when code is pushed to main
+  push:
+    branches: [main]
+  
+  # Allow manual deployment from GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download repository contents
+      - name: Checkout GitHub repo
+        uses: actions/checkout@v4
+
+      # Set HF_TOKEN as a secret inside the Hugging Face Space to be able to work with datasets
+      - name: Set Space secret
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          pip install -U huggingface_hub
+          hf auth login --token "$HF_TOKEN"
+          hf space secrets set HF_TOKEN="$HF_TOKEN" --repo-id aslan-ng/bike-design-explorer
+
+      # Build a temporary directory ("hf_space") containing only files needed by HF Space
+      # Generate a standalone requirements.txt from requirements/production.txt
+      - name: Prepare Space files
+        run: |
+          mkdir hf_space
+
+          cat requirements/base.txt > hf_space/requirements.txt
+          echo "" >> hf_space/requirements.txt
+          grep -v "^-r " requirements/production.txt >> hf_space/requirements.txt
+
+          cp config.py hf_space/
+          cp demand.py hf_space/
+          cp design.py hf_space/
+          cp load_hf.py hf_space/
+          cp main.py hf_space/
+
+      # Upload contents of hf_space to Hugging Face
+      - name: Sync to Hugging Face Space
+        uses: huggingface/hub-sync@v0.1.0
+        with:
+          github_repo_id: ${{ github.repository }}
+          huggingface_repo_id: aslan-ng/bike-design-explorer
+          hf_token: ${{ secrets.HF_TOKEN }}
+          repo_type: space
+          space_sdk: gradio
+          source_dir: hf_space

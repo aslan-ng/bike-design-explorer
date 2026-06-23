@@ -1,6 +1,6 @@
 from itertools import product
 import pandas as pd
-from utils import *
+from design import *
 from data_loader import *
 import json
 from pathlib import Path

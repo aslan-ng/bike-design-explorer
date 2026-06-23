@@ -1,6 +1,5 @@
 #from analyze_demand import *
 import json
-import pandas as pd
 from huggingface_hub import hf_hub_download
 
 from config import DATA_DIR, HF_DATASET_REPO_ID
@@ -10,19 +9,18 @@ DEMAND_FILE_NAME = "demand.json"
 DEMAND_FILE_PATH = DATA_DIR / DEMAND_FILE_NAME
 
 
-def load_demand_df_from_hf() -> pd.DataFrame:
-    """
-    Downloads components.csv from HF.
-    """
+def load_demand_parameters_locally() -> dict:
+    with open(DEMAND_FILE_PATH, "r") as f:
+        return json.load(f)
+
+def load_demand_parameters_from_hf() -> dict:
     file_path = hf_hub_download(
         repo_id=HF_DATASET_REPO_ID,
         repo_type="dataset",
         filename=DEMAND_FILE_NAME,
     )
-    return pd.read_csv(file_path)
-
-def load_demand_df_locally() -> pd.DataFrame:
-    return pd.read_csv(DEMAND_FILE_PATH)
+    with open(file_path, "r") as f:
+        return json.load(f)
 
 
 
@@ -65,6 +63,6 @@ def calculate_profit(
 
 
 if __name__ == "__main__":
-    demand_df = load_demand_df_locally()
+    demand_df = load_demand_parameters_locally()
     print(demand_df)
 

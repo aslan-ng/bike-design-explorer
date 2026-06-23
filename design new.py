@@ -70,7 +70,7 @@ def calculate_design_satisfaction(
     for _, row in user_needs_df.iterrows():
         need = row["Need"]
         importance = row["Importance"]
-        total_contribution = (selected_components_df[need] - 100).sum()
+        total_contribution = (selected_components_df[need]).sum()
         satisfaction += importance * total_contribution
     return float(satisfaction)
 

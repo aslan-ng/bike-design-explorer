@@ -1,0 +1,44 @@
+component_category,component_name,component_description,component_cost,Colorful,Fits Rider's Personality,Minimum Complexity For User,Easy To Maintain,Safety,Low Price Point,Sleek,Stylish,Easy To Ride,Comfortable,Soft Ride,"Repair, Parts, Support Nearby",Ability To Handle Rough Terrain,Ability To Stop Quickly,On-Road And Off-Road Capabilities,Able To Carry Things,Durable,Reliability (No Defective Parts),Feel Young At Heart,Ability To Turn Sharply,Environmentally Friendly,Protect The Rider From Water & Dirt,Light Weight,High Visibility,Easily Handles Change In Incline,Speed,Shifts Smoothly,Provides Competitive Advantage,Aerodynamic,"Specialized Repair, Parts, Support",Rider Expertise Required,Status Symbol/Exclusivity,Navigation Assistance,Practical,Soften The Impact Of Rough Terrain,"Precise Speed Control-Turns, Hills"
+Bike Frame,Aluminium (Standard),Affordable all-around frame,250,0,0,0,10,0,25,5,0,0,0,0,0,0,0,5,0,5,0,0,8,0,0,-5,0,0,0,0,0,0,0,0,-10,0,0,0,0
+Bike Frame,Aluminium (Enriched),Corrosion-resistant upgraded alloy,400,0,0,0,0,0,-5,15,0,0,0,0,0,0,0,15,0,15,10,10,10,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0
+Bike Frame,Carbon Fiber,Ultra-light high-performance frame,1200,0,0,0,0,0,-40,35,0,0,0,0,0,0,0,-10,0,-10,0,30,15,0,0,40,0,0,25,0,30,15,30,0,30,0,0,0,0
+Bike Frame,Steel,Strong frame with smooth ride,500,0,0,0,0,0,5,-10,0,0,15,20,0,0,0,10,0,30,0,-10,-5,0,0,-30,0,0,-15,0,0,0,0,0,0,0,0,0,0
+Bike Frame,Titanium,Premium lightweight durable frame,1800,0,0,0,0,0,-50,30,0,0,10,0,0,0,0,10,0,25,0,20,0,10,0,30,0,0,0,0,0,0,0,0,45,0,0,0,0
+Tires,High Grip,Maximum traction and control,90,0,0,0,0,30,0,5,0,0,0,0,0,20,25,25,0,0,0,15,25,0,0,0,0,0,-10,0,0,0,0,0,0,2,0,0,0
+Tires,Basic,Affordable everyday tire,40,0,0,0,0,0,30,-5,0,0,0,0,0,0,0,-5,0,0,0,-10,0,0,0,0,0,0,-5,0,0,0,0,0,0,0,15,0,0
+Tires,Comfort,Cushioned ride over bumps,60,0,0,0,0,0,0,-10,0,0,30,35,0,0,0,15,0,0,0,-5,-8,0,0,0,0,0,-10,0,0,0,0,0,0,0,0,35,0
+Tires,Racing - Fast,Low rolling resistance tire,90,0,0,0,0,0,0,20,0,0,0,0,0,-15,0,-25,0,0,0,30,15,0,0,0,0,0,35,0,20,10,0,0,0,-2,0,0,0
+Brakes,Standard,Simple and easy to service,50,0,0,0,25,0,30,-5,0,0,0,0,0,0,-10,-5,0,0,0,-5,-5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Brakes,Precision,High-control braking feel,120,0,0,0,0,15,0,10,0,0,0,0,0,0,20,10,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30
+Brakes,Standard Disc,Strong all-weather stopping,180,0,0,0,0,30,-15,5,0,0,0,0,0,0,35,20,0,0,0,5,8,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0
+Handlebars,Basic Straight,Simple predictable handling,35,0,0,0,0,0,0,0,0,10,0,0,0,0,0,10,0,0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,10,10,0,0
+Handlebars,Comfort Straight,Upright relaxed riding position,45,0,0,0,0,0,0,-10,0,20,30,0,0,0,0,5,0,0,0,-10,5,0,0,0,0,0,0,0,0,-15,0,0,0,15,0,0,0
+Handlebars,Basic Drop Down,Aerodynamic road riding posture,70,0,0,0,0,0,0,25,0,0,-15,0,0,0,0,-15,0,0,0,25,-5,0,0,0,0,0,20,0,0,30,0,20,0,-10,0,0,0
+Pedals,Basic Flat,Simple everyday pedal,25,0,0,0,0,0,25,-10,0,20,0,0,0,0,0,5,0,0,0,-5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Pedals,Extra Grip Flat,Secure footing in wet conditions,40,0,0,0,0,15,0,-5,0,10,0,0,0,0,0,10,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Pedals,Basic Clip,Foot retention for performance,70,0,0,0,0,0,0,5,0,0,0,0,0,0,0,-5,0,0,0,15,2,0,0,0,0,0,10,0,0,0,0,20,0,0,0,0,0
+Pedals,Basic Clipless,Maximum pedaling efficiency,120,0,0,0,0,0,0,15,0,0,0,0,0,0,0,-10,0,0,0,25,2,0,0,0,0,0,20,0,25,0,0,35,0,0,0,0,0
+Gears,7 Speed,Simple gearing for daily rides,80,0,0,25,20,0,0,-5,0,0,0,0,0,0,0,-10,0,0,0,-10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Gears,14 Speed,Balanced range and simplicity,180,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,0,0,0,10,0,0,0,0,0,20,0,15,0,0,0,0,0,0,0,0,0
+Gears,24 Speed,Wide gear range for hills,350,0,0,0,0,0,0,10,0,0,0,0,0,0,0,20,0,0,0,20,0,0,0,0,0,35,0,25,0,0,0,10,0,0,0,0,0
+Seat,Urethane Foam All-Purpose,Balanced saddle for all uses,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0
+Seat,Polymer Gel All-Purpose,Pressure-relieving saddle,70,0,0,0,0,0,0,-5,0,0,20,0,0,0,0,5,0,0,0,-5,-2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Seat,Urethane Foam Comfort,Comfort-oriented foam saddle,60,0,0,0,0,0,0,-10,0,0,25,20,0,0,0,10,0,0,0,-8,-2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Seat,Polymer Gel Comfort,Maximum cushioning and support,90,0,0,0,0,0,0,-10,0,0,40,30,0,0,0,10,0,0,0,-8,-2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Seat,Polymer Gel Racing,Performance-focused saddle,130,0,0,0,0,0,0,15,0,0,-20,0,0,0,0,-10,0,0,0,15,0,0,0,0,0,0,10,0,15,0,0,0,0,0,0,0,0
+Accessories,Bell,Audible safety warning,15,0,0,0,0,15,0,-15,0,0,0,0,0,0,0,0,0,0,0,-5,0,0,0,0,5,0,0,0,0,0,0,0,0,5,0,0,0
+Accessories,Reflectors,Improves visibility to others,20,0,0,0,0,20,0,-15,0,0,0,0,0,0,0,0,0,0,0,-10,0,0,0,0,40,0,0,0,0,0,0,0,0,8,0,0,0
+Accessories,Repair Kit,Fix common roadside issues,35,0,0,0,0,0,0,-20,0,0,0,0,25,0,0,5,0,0,0,-5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0
+Accessories,Bottle Cage,Keeps water within reach,20,0,0,0,0,0,0,-5,0,0,5,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0
+Decals,Colorful thin brushstrokes,Express personal style,25,40,35,0,0,0,5,25,40,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Decals,Colorful youth-oriented,Express personal style,25,40,35,0,0,0,5,15,20,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Accessories,Light,Improves visibility at night,40,0,0,0,0,25,0,5,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,45,0,0,0,0,0,0,0,0,15,0,0,0
+Carriers,Attractive Plastic Basket,Convenient basket storage,50,0,0,0,0,0,0,-25,0,0,0,0,0,0,0,-8,25,0,0,-10,-12,0,0,0,0,0,0,0,0,0,0,0,0,8,20,0,0
+Carriers,Small Metal Basket,Convenient basket storage,50,0,0,0,0,0,0,-25,0,0,0,0,0,0,0,-8,25,0,0,-10,-12,0,0,0,0,0,0,0,0,0,0,0,0,8,20,0,0
+Carriers,Large Metal Basket,High-capacity cargo solution,80,0,0,0,0,0,0,-35,0,0,0,0,0,0,0,-15,45,0,0,-15,-20,0,0,-15,0,0,0,0,0,0,0,0,0,10,30,0,0
+Carriers,Simple Flat Rack,Versatile cargo platform,60,0,0,0,0,0,0,-20,0,0,0,0,0,0,0,-5,30,0,0,-10,-10,0,0,0,0,0,0,0,0,0,0,0,0,5,35,0,0
+Carriers,Twin Carrier Baskets,High-capacity cargo solution,120,0,0,0,0,0,0,-35,0,0,0,0,0,0,0,-15,45,0,0,-15,-20,0,0,-15,0,0,0,0,0,0,0,0,0,10,30,0,0
+Suspension/shock absorbers,Front,Front-end shock absorption,220,0,0,0,0,0,0,-10,0,0,15,0,0,25,0,25,0,0,0,5,-5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0
+Suspension/shock absorbers,Full Suspension,Maximum comfort on rough terrain,500,0,0,0,0,0,0,-25,0,0,0,40,0,45,0,40,0,0,0,5,-10,0,0,-30,0,0,-15,0,0,0,0,0,0,0,0,45,0
+Fenders,Plastic,Lightweight splash protection,35,0,0,0,0,0,0,-5,0,0,0,0,0,0,0,5,0,0,0,-5,0,0,30,15,0,0,0,0,0,0,0,0,0,0,0,0,0
+Fenders,Metal,Durable weather protection,55,0,0,0,0,0,0,-10,0,0,0,0,0,0,0,5,0,25,0,-10,-2,0,40,-15,0,0,0,0,0,0,0,0,0,0,0,0,0
