@@ -68,19 +68,28 @@ class Model:
 
 if __name__ == "__main__":
 
-    from load_local import (
-        load_categories_df_locally,
-        load_components_df_locally,
-        load_demand_parameters_locally,
-        load_user_needs_df_locally,
+    import os
+    from dotenv import load_dotenv
+    from huggingface_hub import HfApi
+
+    from load_hf import (
+        load_categories_df_from_hf,
+        load_components_df_from_hf,
+        load_demand_parameters_from_hf,
+        load_user_needs_df_from_hf,
     )
     from example import selected_component_dict_0 as selected_component_dict
 
+    load_dotenv()
+
+    HF_TOKEN = os.getenv("HF_TOKEN")
+    api = HfApi(token=HF_TOKEN)
+
     model = Model(
-        categories_df=load_categories_df_locally(),
-        components_df=load_components_df_locally(),
-        demand_df=load_demand_parameters_locally(),
-        user_needs_df=load_user_needs_df_locally(),
+        categories_df=load_categories_df_from_hf(cache=False),
+        components_df=load_components_df_from_hf(cache=False),
+        demand_df=load_demand_parameters_from_hf(cache=False),
+        user_needs_df=load_user_needs_df_from_hf(cache=False),
     )
 
     result = model.evaluate(
