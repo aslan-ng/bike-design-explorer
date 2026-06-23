@@ -1,6 +1,4 @@
 -r base.txt
-
 tqdm
 dotenv
 numpy
-gradio
