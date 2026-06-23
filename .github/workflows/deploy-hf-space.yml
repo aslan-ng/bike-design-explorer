@@ -17,15 +17,6 @@ jobs:
       - name: Checkout GitHub repo
         uses: actions/checkout@v6
 
-      # Set HF_TOKEN as a secret inside the Hugging Face Space to be able to work with datasets
-      - name: Set Space secret
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          pip install -U huggingface_hub
-          hf auth login --token "$HF_TOKEN"
-          hf spaces secrets add HF_TOKEN="$HF_TOKEN" --repo-id aslan-ng/bike-design-explorer
-
       # Build a temporary directory ("hf_space") containing only files needed by HF Space
       # Generate a standalone requirements.txt from requirements/production.txt
       - name: Prepare Space files
