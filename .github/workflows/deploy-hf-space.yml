@@ -15,7 +15,7 @@ jobs:
     steps:
       # Download repository contents
       - name: Checkout GitHub repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Set HF_TOKEN as a secret inside the Hugging Face Space to be able to work with datasets
       - name: Set Space secret
