@@ -1,0 +1,72 @@
+{
+    "base_market_size": 100,
+    "reference_satisfaction": 0.5588996323028735,
+    "reference_price": 2482.5,
+    "max_satisfaction": 146860.0,
+    "satisfaction_weight": 2.0,
+    "price_sensitivity": 0.0004028197381671702,
+    "best_satisfaction_design": {
+        "selected_components": {
+            "Bike Frame": [
+                "Carbon Fiber"
+            ],
+            "Tires": [
+                "High Grip"
+            ],
+            "Brakes": [
+                "Precision"
+            ],
+            "Handlebars": [
+                "Basic Drop Down"
+            ],
+            "Pedals": [
+                "Basic Clipless"
+            ],
+            "Gears": [
+                "24 Speed"
+            ],
+            "Seat": [
+                "Polymer Gel Comfort"
+            ],
+            "Accessories": [
+                "Bell",
+                "Reflectors",
+                "Repair Kit",
+                "Bottle Cage",
+                "Light"
+            ],
+            "Decals": [
+                "Colorful thin brushstrokes"
+            ],
+            "Carriers": [
+                "Simple Flat Rack"
+            ],
+            "Suspension/shock absorbers": [
+                "Full Suspension"
+            ],
+            "Fenders": [
+                "Plastic"
+            ]
+        },
+        "cost": 2790.0,
+        "selling_price": 4185.0,
+        "satisfaction": 146860.0,
+        "normalized_satisfaction": 1.0,
+        "number_of_components": 16
+    },
+    "design_space_summary": {
+        "number_of_possible_designs": 55987200,
+        "min_cost": 520.0,
+        "median_cost": 1655.0,
+        "max_cost": 3570.0,
+        "min_selling_price": 780.0,
+        "median_selling_price": 2482.5,
+        "max_selling_price": 5355.0,
+        "min_satisfaction": 12465.0,
+        "median_satisfaction": 82080.0,
+        "max_satisfaction": 146860.0,
+        "min_normalized_satisfaction": 0.08487675337055699,
+        "median_normalized_satisfaction": 0.5588996323028735,
+        "max_normalized_satisfaction": 1.0
+    }
+}

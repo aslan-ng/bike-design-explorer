@@ -71,7 +71,9 @@ def load_user_needs_df_from_hf(cache: bool = True) -> pd.DataFrame:
 
 if __name__ == "__main__":
     # Check loading datasets from hf and being equal to the local
+    import os
     from pandas.testing import assert_frame_equal
+    from dotenv import load_dotenv
 
     from load_local import (
         load_categories_df_locally,
@@ -79,6 +81,9 @@ if __name__ == "__main__":
         load_demand_parameters_locally,
         load_user_needs_df_locally,
     )
+
+    load_dotenv()
+    HF_TOKEN = os.getenv("HF_TOKEN")
 
     print("Comparing local files with Hugging Face files...")
 
@@ -107,4 +112,4 @@ if __name__ == "__main__":
     print("✓ User needs match")
     print("✓ Demand parameters match")
 
-    print("✓ All local and Hugging Face data are identical")
+    print("✓ All local and Hugging Face data are identical.")

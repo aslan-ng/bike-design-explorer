@@ -82,21 +82,11 @@ if __name__ == "__main__":
         load_components_df_locally,
         load_user_needs_df_locally,
     )
+    from example import selected_component_dict_0 as selected_component_dict
     
     categories_df = load_categories_df_locally()
     components_df = load_components_df_locally()
     user_needs_df = load_user_needs_df_locally()
-    
-    selected_component_dict = {
-        'Bike Frame': ['Titanium'],
-        'Tires': ['Basic'],
-        'Brakes': ['Precision'],
-        'Handlebars': ['Comfort Straight'],
-        'Pedals': ['Extra Grip Flat'],
-        'Gears': ['14 Speed'],
-        'Seat': ['Polymer Gel All-Purpose'],
-        'Accessories': ['Light'],
-    }
 
     selected_components_df = select_design_components(
         selected_components=selected_component_dict,

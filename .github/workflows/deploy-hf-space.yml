@@ -31,7 +31,7 @@ jobs:
           cp demand.py hf_space/
           cp design.py hf_space/
           cp load_hf.py hf_space/
-          cp main.py hf_space/
+          cp model.py hf_space/
 
       # Upload contents of hf_space to Hugging Face
       - name: Sync to Hugging Face Space
