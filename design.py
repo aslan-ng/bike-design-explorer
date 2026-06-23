@@ -70,16 +70,18 @@ def calculate_design_satisfaction(
     for _, row in user_needs_df.iterrows():
         need = row["Need"]
         importance = row["Importance"]
-        total_contribution = (selected_components_df[need] - 100).sum()
+        total_contribution = (selected_components_df[need]).sum()
         satisfaction += importance * total_contribution
     return float(satisfaction)
 
 
 if __name__ == "__main__":
     # Load data
-    from categories import load_categories_df_locally
-    from components import load_components_df_locally
-    from user_needs import load_user_needs_df_locally
+    from load_local import (
+        load_categories_df_locally,
+        load_components_df_locally,
+        load_user_needs_df_locally,
+    )
     
     categories_df = load_categories_df_locally()
     components_df = load_components_df_locally()

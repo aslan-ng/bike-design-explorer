@@ -1,15 +1,15 @@
 from config import HF_DATASET_REPO_ID
-from categories import (
+from load_local import (
+    CATEGORIES_FILE_PATH,
+    COMPONENTS_FILE_PATH,
+    DEMAND_FILE_PATH,
+    USER_NEEDS_FILE_PATH,
+)
+from config import (
     CATEGORIES_FILE_NAME,
-    CATEGORIES_FILE_PATH
-)
-from components import (
     COMPONENTS_FILE_NAME,
-    COMPONENTS_FILE_PATH
-)
-from user_needs import (
+    DEMAND_FILE_NAME,
     USER_NEEDS_FILE_NAME,
-    USER_NEEDS_FILE_PATH
 )
 
 

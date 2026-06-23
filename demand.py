@@ -1,30 +1,3 @@
-#from analyze_demand import *
-import json
-from huggingface_hub import hf_hub_download
-
-from config import DATA_DIR, HF_DATASET_REPO_ID
-
-
-DEMAND_FILE_NAME = "demand.json"
-DEMAND_FILE_PATH = DATA_DIR / DEMAND_FILE_NAME
-
-
-def load_demand_parameters_locally() -> dict:
-    with open(DEMAND_FILE_PATH, "r") as f:
-        return json.load(f)
-
-def load_demand_parameters_from_hf() -> dict:
-    file_path = hf_hub_download(
-        repo_id=HF_DATASET_REPO_ID,
-        repo_type="dataset",
-        filename=DEMAND_FILE_NAME,
-    )
-    with open(file_path, "r") as f:
-        return json.load(f)
-
-
-
-
 '''
 def calculate_demand(
     selling_price: float,
@@ -63,6 +36,8 @@ def calculate_profit(
 
 
 if __name__ == "__main__":
+    
+    from load_local import load_demand_parameters_locally
+
     demand_df = load_demand_parameters_locally()
     print(demand_df)
-

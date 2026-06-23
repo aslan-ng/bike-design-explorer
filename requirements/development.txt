@@ -2,3 +2,4 @@
 
 tqdm
 dotenv
+numpy
