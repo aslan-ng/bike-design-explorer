@@ -10,6 +10,7 @@ from load_hf import (
     load_demand_parameters_from_hf,
     load_user_needs_df_from_hf,
 )
+from css import css
 
 
 HF_TOKEN = os.getenv("HF_TOKEN")
@@ -26,47 +27,6 @@ model = Model(
     demand_df=demand_df,
     user_needs_df=user_needs_df,
 )
-
-
-css = """
-.options-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-.option-card {
-    flex: 1 1 260px;
-    min-width: 220px;
-    border: 1px solid #4b4b55;
-    border-radius: 8px;
-    padding: 10px 14px;
-    cursor: pointer;
-    background: #25252a;
-}
-.option-card:hover {
-    border-color: #ff7a1a;
-}
-.option-title {
-    font-size: 1rem;
-    font-weight: 700;
-}
-.option-description {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #b8b8b8;
-    margin-top: 4px;
-    line-height: 1.25;
-}
-.selected-card {
-    border-color: #ff7a1a;
-    box-shadow: 0 0 0 2px #ff7a1a;
-}
-@media (max-width: 640px) {
-    .option-card {
-        flex-basis: 100%;
-    }
-}
-"""
 
 
 def make_card_html(

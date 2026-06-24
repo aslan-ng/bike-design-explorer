@@ -29,6 +29,7 @@ jobs:
           cp design.py hf_space/
           cp load_hf.py hf_space/
           cp model.py hf_space/
+          cp css.py hf_space/
 
           cat > hf_space/README.md << 'EOF'
           ---
@@ -38,7 +39,7 @@ jobs:
           colorTo: blue
           sdk: gradio
           sdk_version: "6.19.0"
-          python_version: "3.13"
+          python_version: "3.12"
           app_file: app.py
           pinned: true
           license: mit
