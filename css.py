@@ -9,7 +9,9 @@ css = """
 .option-card {
     width: 100%;
     min-height: 90px;
+    min-width: 220px;
     box-sizing: border-box;
+    flex: 1 1 260px;
     border: 1px solid #4b4b55;
     border-radius: 8px;
     padding: 10px 14px;
@@ -40,8 +42,10 @@ css = """
 }
 
 @media (max-width: 640px) {
-    .options-grid {
-        grid-template-columns: 1fr;
+    .option-card {
+width: 100%;
+    min-height: 90px;
+    box-sizing: border-box;        flex-basis: 100%;
     }
 }
 """
