@@ -49,6 +49,14 @@ def make_card_html(
     """
 
 
+def make_user_needs_html():
+    return user_needs_df.to_html(
+        index=False,
+        classes="user-needs-table",
+        border=0,
+    )
+
+
 def make_select_component_fn(
     options: list[dict],
     component_name: str,
@@ -150,13 +158,9 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
             label="Download User Needs",
             value=USER_NEEDS_FILE_NAME,
         )
-    user_needs_table = gr.Dataframe(
-        value=user_needs_df,
-        label="View User Needs",
-        interactive=False,
+    user_needs_table = gr.HTML(
+        value=make_user_needs_html(),
         visible=False,
-        max_height=f"{len(user_needs_df) * 45 + 80}px",
-        wrap=True,
     )
 
     def toggle_user_needs_table(is_visible):
