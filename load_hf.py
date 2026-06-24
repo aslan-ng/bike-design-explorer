@@ -92,24 +92,26 @@ if __name__ == "__main__":
         load_categories_df_from_hf(cache=False),
         check_dtype=False,
     )
+    print("✓ Categories match")
+
     assert_frame_equal(
         load_components_df_locally(),
         load_components_df_from_hf(cache=False),
         check_dtype=False,
     )
+    print("✓ Components match")
+
     assert_frame_equal(
         load_user_needs_df_locally(),
         load_user_needs_df_from_hf(cache=False),
         check_dtype=False,
     )
+    print("✓ User needs match")
+
     assert (
         load_demand_parameters_locally()
         == load_demand_parameters_from_hf(cache=False)
     )
-
-    print("✓ Categories match")
-    print("✓ Components match")
-    print("✓ User needs match")
     print("✓ Demand parameters match")
-
-    print("✓ All local and Hugging Face data are identical.")
+    
+    print("✓ All local and Hugging Face data are identical")

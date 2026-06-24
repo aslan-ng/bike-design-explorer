@@ -130,6 +130,7 @@ def evaluate_ui(selling_price, *category_values):
 
 
 with gr.Blocks(title="Bike Design Explorer") as demo:
+    # Header
     gr.Markdown(
         """
         # Bike Design Explorer
@@ -139,18 +140,44 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
         """
     )
 
+    # User needs buttons
     gr.Markdown("### User Needs Data")
 
+    user_needs_visible = gr.State(False)
+
     with gr.Row():
-        gr.Button(
-            "View CSV",
-            link=USER_NEEDS_FILE_NAME,
-        )
+        view_user_needs_button = gr.Button("Show User Needs")
         gr.DownloadButton(
             label="Download CSV",
             value=USER_NEEDS_FILE_NAME,
         )
+    user_needs_table = gr.Dataframe(
+        value=user_needs_df,
+        label="User Needs",
+        interactive=False,
+        visible=False,
+    )
 
+    def toggle_user_needs_table(is_visible):
+        new_visible = not is_visible
+        button_label = "Hide User Needs" if new_visible else "Show User Needs"
+        return (
+            new_visible,
+            gr.update(visible=new_visible),
+            gr.update(value=button_label),
+        )
+
+    view_user_needs_button.click(
+        fn=toggle_user_needs_table,
+        inputs=user_needs_visible,
+        outputs=[
+            user_needs_visible,
+            user_needs_table,
+            view_user_needs_button,
+        ],
+    )
+
+    # Components selection area
     category_state_inputs = []
 
     for category in sorted(components_df["component_category"].unique()):
