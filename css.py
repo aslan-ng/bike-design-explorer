@@ -1,15 +1,11 @@
 css = """
 .options-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 12px;
-    width: 100%;
 }
 
 .option-card {
-    width: 100%;
-    min-height: 90px;
-    min-width: 220px;
     box-sizing: border-box;
     flex: 1 1 260px;
     border: 1px solid #4b4b55;

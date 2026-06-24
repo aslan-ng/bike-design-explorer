@@ -11,6 +11,7 @@ from load_hf import (
     load_user_needs_df_from_hf,
 )
 from css import css
+from config import USER_NEEDS_FILE_NAME
 
 
 HF_TOKEN = os.getenv("HF_TOKEN")
@@ -123,7 +124,7 @@ def evaluate_ui(selling_price, *category_values):
 |---|---:|
 | Design Cost | ${result["design_cost"]:,.2f} |
 | User Satisfaction | {result["user_satisfaction"]:,.0f} |
-| Demand | {result["demand"]:,} |
+| Items Sold | {result["demand"]:,} |
 | Profit | ${result["profit"]:,.2f} |
 """
 
@@ -137,6 +138,18 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
         cost, user satisfaction, demand, and profit.
         """
     )
+
+    gr.Markdown("### User Needs Data")
+
+    with gr.Row():
+        gr.Button(
+            "View CSV",
+            link=USER_NEEDS_FILE_NAME,
+        )
+        gr.DownloadButton(
+            label="Download CSV",
+            value=USER_NEEDS_FILE_NAME,
+        )
 
     category_state_inputs = []
 
