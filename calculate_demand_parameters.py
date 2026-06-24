@@ -23,11 +23,11 @@ from load_local import DATA_DIR, DEMAND_FILE_PATH
 from design import calculate_user_satisfaction, calculate_design_cost
 
 
-CHECKPOINT_DIR = DATA_DIR / "demand_analysis"
-CHECKPOINT_STATE_PATH = CHECKPOINT_DIR / "checkpoint_state.json"
-COST_ARRAY_PATH = CHECKPOINT_DIR / "costs.npy"
-SATISFACTION_ARRAY_PATH = CHECKPOINT_DIR / "satisfactions.npy"
-OPTIONS_PATH = CHECKPOINT_DIR / "precomputed_options.pkl"
+DEMAND_ANALYSIS_DIR = DATA_DIR / "demand_analysis"
+CHECKPOINT_STATE_PATH = DEMAND_ANALYSIS_DIR / "checkpoint_state.json"
+COST_ARRAY_PATH = DEMAND_ANALYSIS_DIR / "costs.npy"
+SATISFACTION_ARRAY_PATH = DEMAND_ANALYSIS_DIR / "satisfactions.npy"
+OPTIONS_PATH = DEMAND_ANALYSIS_DIR / "precomputed_options.pkl"
 
 
 _WORKER_OPTIONS = None
@@ -234,7 +234,7 @@ def load_checkpoint_state() -> dict | None:
         return json.load(f)
 
 def save_checkpoint_state(state: dict) -> None:
-    CHECKPOINT_DIR.mkdir(exist_ok=True)
+    DEMAND_ANALYSIS_DIR.mkdir(exist_ok=True)
 
     temporary_path = CHECKPOINT_STATE_PATH.with_suffix(".tmp")
 
@@ -252,7 +252,7 @@ def estimate_demand_parameters(
     chunk_size: int = 100_000,
     resume: bool = True,
 ) -> dict:
-    CHECKPOINT_DIR.mkdir(exist_ok=True)
+    DEMAND_ANALYSIS_DIR.mkdir(exist_ok=True)
 
     components_df = components_df.copy()
     categories_df = categories_df.copy()
