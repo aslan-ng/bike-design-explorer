@@ -147,12 +147,12 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
     with gr.Row():
         view_user_needs_button = gr.Button("Show User Needs")
         gr.DownloadButton(
-            label="Download CSV",
+            label="Download User Needs",
             value=USER_NEEDS_FILE_NAME,
         )
     user_needs_table = gr.Dataframe(
         value=user_needs_df,
-        label="User Needs",
+        label="View User Needs",
         interactive=False,
         visible=False,
     )
