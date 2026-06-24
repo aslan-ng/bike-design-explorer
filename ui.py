@@ -45,3 +45,14 @@ width: 100%;
     }
 }
 """
+
+header = f"""
+# Bike Design Explorer 🚲
+
+Review the user needs data, then select bike components accordingly and set a selling price.
+Evaluate user satisfaction, items sold, and profit for your design.
+"""
+
+user_needs_guide = f"""
+**Need score interpretation:** 100 = neutral, values above 100 contribute positively to a need, and values below 100 contribute negatively.
+"""

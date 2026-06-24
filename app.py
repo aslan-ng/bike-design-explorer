@@ -10,7 +10,11 @@ from load_hf import (
     load_demand_parameters_from_hf,
     load_user_needs_df_from_hf,
 )
-from css import css
+from ui import (
+    css,
+    header,
+    user_needs_guide,
+)
 from config import USER_NEEDS_FILE_NAME
 
 
@@ -132,17 +136,12 @@ def evaluate_ui(selling_price, *category_values):
 with gr.Blocks(title="Bike Design Explorer") as demo:
     # Header
     gr.Markdown(
-        """
-        # Bike Design Explorer
-
-        Choose bike components, then set a unit selling price to evaluate
-        cost, user satisfaction, demand, and profit.
-        """
+        f"{header}"
     )
 
     # User needs buttons
     gr.Markdown("### User Needs Data")
-
+    gr.Markdown(f"{user_needs_guide}")
     user_needs_visible = gr.State(False)
 
     with gr.Row():
@@ -251,4 +250,7 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
 
 if __name__ == "__main__":
     demo.queue()
-    demo.launch(css=css)
+    demo.launch(
+        css=css,
+        ssr_mode=False,
+    )
