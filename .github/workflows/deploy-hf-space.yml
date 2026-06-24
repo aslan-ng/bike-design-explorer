@@ -29,7 +29,7 @@ jobs:
           cp design.py hf_space/
           cp load_hf.py hf_space/
           cp model.py hf_space/
-          cp css.py hf_space/
+          cp ui.py hf_space/
           cp data/user_needs.csv hf_space/
 
           cat > hf_space/README.md << 'EOF'
