@@ -155,6 +155,8 @@ with gr.Blocks(title="Bike Design Explorer") as demo:
         label="View User Needs",
         interactive=False,
         visible=False,
+        max_height=f"{len(user_needs_df) * 45 + 80}px",
+        wrap=True,
     )
 
     def toggle_user_needs_table(is_visible):
